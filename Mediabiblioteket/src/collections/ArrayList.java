@@ -18,6 +18,14 @@ public class ArrayList<E> implements List<E>
 	private E[] elements;
 	private int size;
 
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
 	/**
 	 * Kosntruktorn sätter default värdet till 30.
 	 */

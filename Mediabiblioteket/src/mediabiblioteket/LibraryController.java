@@ -227,7 +227,7 @@ public class LibraryController
 	
 	/**
 	 * Hämta Media objekt med ObjectID genom att använda binär sökning
-	 * @param ID. Media ObjectID
+	 * @param ID Media ObjectID
 	 * @return. Media objektet som söks. null om det sökta objektet inte existerar
 	 */
 	public Media getMedia(String ID)
@@ -260,7 +260,7 @@ public class LibraryController
 	
 	/**
 	 * Visa detaljerat informatiom om ett visst Media
-	 * @param theString. Texten på det sökta Media objektet
+	 * @param theString Texten på det sökta Media objektet
 	 * @return. Media objektet som man vill ha detaljerat information om 
 	 */
 	public void showSelectedMediaInfo(String theString)
