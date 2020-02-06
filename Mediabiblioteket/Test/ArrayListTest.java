@@ -20,7 +20,7 @@ ArrayList Testarray= new ArrayList();
 Object[] objs = new Object[]{3,4};
 
     @Test
-    public void Add_TestArrayAdding_AddedElementIsSameAsStaticallyAddedElement() {
+    public void Add_AddedElementIs_SameAsStaticallyAddedElement() {
 
 // Lägger in element i ArrayListen men ArrayList .add java-funktionen.
         ArrayList StaticlyAddArray= new ArrayList();
@@ -45,25 +45,39 @@ Object[] objs = new Object[]{3,4};
 
 
     @Test
-    public void Add_TestArrayAdding_AddingProduceIndexOutOfBounds() {
+    public void Add__IndexIsBelowZero_IndexOutOfBoundsException() {
         try {
-            Testarray.add(5, objs);
-        }
-        catch(Exception e) {
+            Testarray.add(-5, objs);
+        } catch (Exception e) {
 
-         String test = e.toString();
+            String test = e.toString();
 
-         assertEquals("java.lang.IndexOutOfBoundsException", test);
-
+            assertEquals("java.lang.IndexOutOfBoundsException", test);
 
 
         }
+    }
+        @Test
+
+        public void Add__IndexIsAboveSize_IndexOutOfBoundsException() {
+            try {
+                Testarray.add(5, objs);
+            }
+            catch(Exception e) {
+
+                String test = e.toString();
+
+                assertEquals("java.lang.IndexOutOfBoundsException", test);
+
+
+
+            }
 
 
     }
 
     @Test
-    public void Add_TestArrayAdding_AddingTriggerGrowThrewSameSizeAsElementsLength() {
+    public void Add_TriggerGrow_ArraySizeIncreaseByOne() {
                 ArrayList testgrow = new ArrayList();
 
                 testgrow.setSize(2);
