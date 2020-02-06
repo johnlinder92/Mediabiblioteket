@@ -2,8 +2,11 @@ import collections.ArrayList;
 
 import mediabiblioteket.Book;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.function.Try;
 
 import javax.lang.model.element.Element;
+
+import java.nio.channels.ScatteringByteChannel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -39,4 +42,36 @@ Object[] objs = new Object[]{3,4};
 
 
     }
+
+
+    @Test
+    public void Add_TestArrayAdding_AddingProduceIndexOutOfBounds() {
+        try {
+            Testarray.add(5, objs);
+        }
+        catch(Exception e) {
+
+         String test = e.toString();
+
+         assertEquals("java.lang.IndexOutOfBoundsException", test);
+
+
+
+        }
+
+
+    }
+
+    @Test
+    public void Add_TestArrayAdding_AddingTriggerGrowThrewSameSizeAsElementsLength() {
+                ArrayList testgrow = new ArrayList();
+
+                testgrow.setSize(2);
+        testgrow.add(1, objs);
+
+
+assertEquals(3, testgrow.size());
+    }
+
+
 }
