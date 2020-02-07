@@ -1,3 +1,4 @@
+package collections;
 import collections.ArrayList;
 
 import mediabiblioteket.Book;
@@ -16,8 +17,8 @@ public class ArrayListTest<E> {
 
 
 
-ArrayList Testarray= new ArrayList();
-Object[] objs = new Object[]{3,4};
+    ArrayList Testarray= new ArrayList();
+    Object[] objs = new Object[]{3,4};
 
     @Test
     public void Add_AddedElementIs_SameAsStaticallyAddedElement() {
@@ -38,7 +39,7 @@ Object[] objs = new Object[]{3,4};
         Testarray.add(5, objs);
 
 
-       assertEquals(StaticlyAddArray.get(5), Testarray.get(5));
+        assertEquals(StaticlyAddArray.get(5), Testarray.get(5));
 
 
     }
@@ -57,35 +58,112 @@ Object[] objs = new Object[]{3,4};
 
         }
     }
-        @Test
+    @Test
 
-        public void Add__IndexIsAboveSize_IndexOutOfBoundsException() {
-            try {
-                Testarray.add(5, objs);
-            }
-            catch(Exception e) {
+    public void Add__IndexIsAboveSize_IndexOutOfBoundsException() {
+        try {
+            Testarray.add(5, objs);
+        }
+        catch(Exception e) {
 
-                String test = e.toString();
+            String test = e.toString();
 
-                assertEquals("java.lang.IndexOutOfBoundsException", test);
+            assertEquals("java.lang.IndexOutOfBoundsException", test);
 
 
 
-            }
+        }
 
 
     }
 
     @Test
     public void Add_TriggerGrow_ArraySizeIncreaseByOne() {
-                ArrayList testgrow = new ArrayList();
+        ArrayList testgrow = new ArrayList();
 
-                testgrow.setSize(2);
+        testgrow.setSize(2);
         testgrow.add(1, objs);
 
 
-assertEquals(3, testgrow.size());
+        assertEquals(3, testgrow.size());
     }
 
 
+
+
+
+    @Test
+    void getSize() {
+
+
+
+    }
+
+    @Test
+    void setSize() {
+    }
+
+    @Test
+    void sortByTitle() {
+    }
+
+    @Test
+    void addFirst() {
+    }
+
+    @Test
+    void addLast() {
+    }
+
+    @Test
+    void remove() {
+    }
+
+    @Test
+    void removeFirst() {
+    }
+
+    @Test
+    void removeLast() {
+    }
+
+    @Test
+    void clear() {
+    }
+
+    @Test
+    void get() {
+    }
+
+    @Test
+    void set() {
+    }
+
+    @Test
+    void getElements() {
+    }
+
+    @Test
+    void setElements() {
+    }
+
+    @Test
+    void indexOfFirst() {
+    }
+
+    @Test
+    void indexOf() {
+    }
+
+    @Test
+    void size() {
+    }
+
+    @Test
+    void testToString() {
+    }
+
+    @Test
+    void iterator() {
+    }
 }

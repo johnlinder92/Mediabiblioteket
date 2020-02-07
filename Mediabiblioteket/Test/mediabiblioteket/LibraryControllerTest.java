@@ -5,13 +5,44 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryControllerTest {
-
+LibraryController LController = new LibraryController();
     @Test
-    void checkUserInput() {
+    void checkUserInput_GiltigInput_ExpectTrue() {
+      boolean test=  LController.checkUserInput("test");
+
+
+        assertEquals(true, test);
     }
+    @Test
+    void checkUserInput_OgiltigInput_ExpectFalse() {
+        boolean test=  LController.checkUserInput("@££$€$€£€€${{${");
+
+
+        assertEquals(false, test);
+    }
+
+    /*@Test
+    void checkUserInput_OgiltigInput_ExpectException() {
+        try{
+
+        boolean test=  LController.checkUserInput("");
+
+        }
+
+        catch(Exception e) {
+
+            String test = e.toString();
+
+            assertEquals("hmm", test);
+        }
+    }*/
+
 
     @Test
     void checkInputOnlyDigits() {
+       boolean test= LController.checkInputOnlyDigits("");
+       assertEquals(false, test);
+
     }
 
     @Test
