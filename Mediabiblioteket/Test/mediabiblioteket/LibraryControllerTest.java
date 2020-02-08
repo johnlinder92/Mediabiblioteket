@@ -2,48 +2,37 @@ package mediabiblioteket;
 
 import org.junit.jupiter.api.Test;
 
+
+import javax.swing.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryControllerTest {
 LibraryController LController = new LibraryController();
+    JFrame frame = new JFrame();
     @Test
-    void checkUserInput_GiltigInput_ExpectTrue() {
-      boolean test=  LController.checkUserInput("test");
-
-
-        assertEquals(true, test);
+    void checkUserInput_goodInput_ExpectTrue() {
+        assertTrue(LController.checkUserInput("test"));
     }
     @Test
-    void checkUserInput_OgiltigInput_ExpectFalse() {
-        boolean test=  LController.checkUserInput("@££$€$€£€€${{${");
-
-
-        assertEquals(false, test);
+    void checkUserInput_nullInput_expectFalse() {
+        assertFalse(LController.checkUserInput(null));
     }
-
-    /*@Test
-    void checkUserInput_OgiltigInput_ExpectException() {
-        try{
-
-        boolean test=  LController.checkUserInput("");
-
-        }
-
-        catch(Exception e) {
-
-            String test = e.toString();
-
-            assertEquals("hmm", test);
-        }
-    }*/
-
-
     @Test
-    void checkInputOnlyDigits() {
-       boolean test= LController.checkInputOnlyDigits("");
-       assertEquals(false, test);
-
+    void checkUserInput_nothingString_expectFalse() {
+        assertFalse(LController.checkUserInput(""));
     }
+    @Test
+    void checkUserInput_badInput_expectFalse() { assertFalse(LController.checkUserInput("%¤#¤¤")); }
+    @Test
+    void checkInputOnlyDigits_testLetters_expectFalse() { assertFalse(LController.checkInputOnlyDigits("test")); }
+    @Test
+    void checkInputOnlyDigits_validNumbers_ExpectTrue() { assertTrue(LController.checkInputOnlyDigits("123")); }
+    @Test
+    void checkInputOnlyDigits_toSmallNumber_ExpectFalse() { assertFalse( LController.checkInputOnlyDigits("-9130791238")); }
+    @Test
+    void checkInputOnlyDigits_toBigNumber_ExpectFalse() { assertFalse(LController.checkInputOnlyDigits("213079123801239931209")); }
+
 
     @Test
     void writeToFile() {

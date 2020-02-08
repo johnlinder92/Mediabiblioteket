@@ -21,7 +21,7 @@ public class ArrayListTest<E> {
     Object[] objs = new Object[]{3,4};
 
     @Test
-    public void Add_AddedElementIs_SameAsStaticallyAddedElement() {
+    public void Add_AddingElement_SameAsStaticallyAddedElement() {
 
 // Lägger in element i ArrayListen men ArrayList .add java-funktionen.
         ArrayList StaticlyAddArray= new ArrayList();
@@ -38,13 +38,13 @@ public class ArrayListTest<E> {
         Testarray.setSize(25);
         Testarray.add(5, objs);
 
-
+//jämför att de är lika
         assertEquals(StaticlyAddArray.get(5), Testarray.get(5));
 
 
     }
 
-
+//
     @Test
     public void Add__IndexIsBelowZero_IndexOutOfBoundsException() {
         try {
