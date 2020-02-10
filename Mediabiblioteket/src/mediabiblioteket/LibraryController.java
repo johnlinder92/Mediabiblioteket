@@ -26,6 +26,14 @@ public class LibraryController
 
 	LinkedList<Media> mediaSearchResults;
 
+	public Borrower getCurrentBorrower() {
+		return currentBorrower;
+	}
+
+	public void setCurrentBorrower(Borrower currentBorrower) {
+		this.currentBorrower = currentBorrower;
+	}
+
 	/**
 	 * Konstruktor som ser till att boota systemet med samtliga Media, Borrowers, Borrowed och MediaSearchResults i ArrayList 
 	 */
