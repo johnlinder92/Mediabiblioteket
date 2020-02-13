@@ -1,11 +1,12 @@
 package mediabiblioteket;
 
-import collections.ArrayList;
+
 import collections.LinkedList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class MediaTest {
 
@@ -75,10 +76,14 @@ class MediaTest {
 
     @Test
     void getObjectID() {
+        assertNotEquals("Test ID Book", mediaTestDVD.getObjectID());
+        assertEquals("Test ID Book", mediaTestBook.getObjectID());
     }
+
 
     @Test
     void setObjectID() {
+
     }
 
     @Test

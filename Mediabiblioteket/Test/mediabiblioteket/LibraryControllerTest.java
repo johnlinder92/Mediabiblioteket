@@ -1,8 +1,8 @@
 package mediabiblioteket;
 
-import collections.ArrayList;
-import org.junit.jupiter.api.Test;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
@@ -11,13 +11,22 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class LibraryControllerTest {
-LibraryController LController = new LibraryController();
-    JFrame frame = new JFrame();
+    private LibraryController LController;
+    private JFrame frame = new JFrame();
+
+    @BeforeEach
+    void setUp(){
+        LController = mock(LibraryController.class);
+        doNothing().when(LController).showMessage("Incorrect characters only 0-9 are allowed");
+
+    }
+
     @Test
     void checkUserInput_goodInput_ExpectTrue() {
-        assertTrue(LController.checkUserInput("test"));
+        assertTrue(LController.checkUserInput("1"));
     }
     @Test
     void checkUserInput_nullInput_expectFalse() {
@@ -29,8 +38,13 @@ LibraryController LController = new LibraryController();
     }
     @Test
     void checkUserInput_badInput_expectFalse() { assertFalse(LController.checkUserInput("%¤#¤¤")); }
+
+
     @Test
-    void checkInputOnlyDigits_testLetters_expectFalse() { assertFalse(LController.checkInputOnlyDigits("test")); }
+    void checkInputOnlyDigits_testLetters_expectFalse() {
+        assertFalse(LController.checkInputOnlyDigits("test"));
+    }
+
     @Test
     void checkInputOnlyDigits_validNumbers_ExpectTrue() { assertTrue(LController.checkInputOnlyDigits("123")); }
     @Test
@@ -79,6 +93,10 @@ LibraryController LController = new LibraryController();
         assertTrue(testbok.borrowed);
     }
 
+    @Test
+    void testCheckInputOnlyDigitsNew(){
+
+    }
     @Test
     void returnMedia() {
     }

@@ -88,6 +88,11 @@ public class LibraryController
 	/*
 	 * Samma som ovan fast strängen får enbart innehålla siffro, används till Media-ObjectID
 	 */
+
+	public void showMessage(String message){
+		JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+
+	}
 	
 	boolean checkInputOnlyDigits(String inputString)
 	{
@@ -95,7 +100,7 @@ public class LibraryController
 		String regex = "^-?\\d*?\\d+$";
 		if(inputString==null)
 		{
-			JOptionPane.showMessageDialog(null, "Incorrect characters only 0-9 are allowed", "Error", JOptionPane.ERROR_MESSAGE);
+			showMessage("Incorrect characters only 0-9 are allowed");
 			return false;
 		}
 		else if(!inputString.matches(regex))
