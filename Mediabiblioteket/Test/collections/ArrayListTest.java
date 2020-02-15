@@ -21,7 +21,7 @@ public class ArrayListTest<E> {
     Object[] objs = new Object[]{3,4};
 
     @Test
-    public void Add_AddingElement_SameAsStaticallyAddedElement() {
+    public void Add_AddingElement_SameAsStaticallyAddedElement_JL() {
 
 // Lägger in element i ArrayListen men ArrayList .add java-funktionen.
         ArrayList StaticlyAddArray= new ArrayList();
@@ -46,7 +46,7 @@ public class ArrayListTest<E> {
 
 //
     @Test
-    public void Add__IndexIsBelowZero_IndexOutOfBoundsException() {
+    public void Add__IndexIsBelowZero_IndexOutOfBoundsException_JL() {
         try {
             Testarray.add(-5, objs);
         } catch (Exception e) {
@@ -60,7 +60,7 @@ public class ArrayListTest<E> {
     }
     @Test
 
-    public void Add__IndexIsAboveSize_IndexOutOfBoundsException() {
+    public void Add__IndexIsAboveSize_IndexOutOfBoundsException_JL() {
         try {
             Testarray.add(5, objs);
         }
@@ -78,7 +78,7 @@ public class ArrayListTest<E> {
     }
 
     @Test
-    public void Add_TriggerGrow_ArraySizeIncreaseByOne() {
+    public void Add_TriggerGrow_ArraySizeIncreaseByOne_JL() {
         ArrayList testgrow = new ArrayList();
 
         testgrow.setSize(2);

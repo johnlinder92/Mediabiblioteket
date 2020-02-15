@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,16 +17,20 @@ import static org.mockito.Mockito.*;
 class LibraryControllerTest {
     private LibraryController LController;
     private JFrame frame = new JFrame();
-    private Borrower testB;
-    private Book testBok;
-
+    private Borrower borrower;
+    private ArrayList<Media> testarray = new ArrayList();
     @BeforeEach
     void setUp(){
-        LController = mock(LibraryController.class);
-        doNothing().when(LController).showMessage("Incorrect characters only 0-9 are allowed");
-        testBok = new Book("Bok","Boktitel", "BokID", 1920, "Hermann Hesse");
-        testB= new Borrower("testnamn", "121212-1212", "0700900909");
+        LController = new LibraryController(false);
+       /* LController = mock(LibraryController.class);
+        doNothing().when(LController).showMessage("Incorrect characters only 0-9 are allowed");*/
 
+        Book bok= new Book("test1", "test1", "4321", 9998, "test");
+
+        LController.getAllMediaObjects().add(bok);
+        Book bok2= new Book("test", "test", "1234", 1111, "test");
+
+        LController.getAllMediaObjects().add(bok2);
     }
 
     @Test
@@ -64,7 +69,7 @@ class LibraryControllerTest {
 
 
     @Test
-    void test_writeToFile() {
+    void writeToFile_compareTestDataWithWrittenTestDataInFile_expectToBeSAme() {
         // Fyll på strukturen borrowed med data
         String testdata = "121212-1212;123456"; // Personnummer;MedieID
         LController.borrowed.add(testdata);
@@ -88,10 +93,13 @@ class LibraryControllerTest {
     }
 
     @Test
-    void borrowMedia() {
+    void borrowMedia_TestBookObjectBorrowedVariable_ExpectTrue_JL_NOT_FINISHED() {
         //Media test_borrowMedia = new Media("Bok", "boktitel", "123", 45);
-        LController.borrowMedia(testBok);
-        assertTrue(testBok.borrowed);
+        Book testbok = new Book("Bok","Boktitel", "BokID", 1920, "Hermann Hesse");
+        Borrower testB= new Borrower("testnamn", "121212-1212", "0700900909");
+        LController.setCurrentBorrower(testB);
+        LController.borrowMedia(testbok);
+        assertTrue(testbok.borrowed);
     }
 
     @Test
@@ -100,6 +108,14 @@ class LibraryControllerTest {
     }
     @Test
     void returnMedia() {
+        Borrower borrower = new Borrower("Testname", "TEstpersonalnumber", "TEstPhoneNumber");
+        Book boken = new Book("TEsttype", "TestTitle", "TestID", 1977, "TestAuthor");
+        boken.setBorrowed(true);
+        boken.setThisMediaBorrower(borrower);
+        LController.returnMedia(boken);
+
+        assertFalse(boken.borrowed);
+        assertNull(boken.getThisMediaBorrower());
     }
 
     @Test
@@ -107,7 +123,12 @@ class LibraryControllerTest {
     }
 
     @Test
-    void sortMedia() {
+    void sortMedia_JL() {
+        String iDBeforeSort =  LController.getAllMediaObjects().get(0).objectID;
+        LController.sortMedia();
+        String iDAfterSort  = LController.getAllMediaObjects().get(1).objectID;
+        assertEquals(iDBeforeSort, iDAfterSort);
+
     }
 
     @Test

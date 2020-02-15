@@ -20,16 +20,21 @@ public class LibraryController
 {
 	Borrower currentBorrower;
 	GUI theGUI;
-	ArrayList<Media> allMediaObjects;
+	private ArrayList<Media> allMediaObjects;
 	ArrayList<String> borrowed;
 	ArrayList<Borrower> allBorrowers;
 
 	LinkedList<Media> mediaSearchResults;
 
-	public Borrower getCurrentBorrower() {
-		return currentBorrower;
+	public ArrayList<Media> getAllMediaObjects() {
+		return allMediaObjects;
 	}
 
+	public void setAllMediaObjects(ArrayList<Media> allMediaObjects) {
+		this.allMediaObjects = allMediaObjects;
+	}
+
+	//  Lagt till av john för att testaCurrentBorrower
 	public void setCurrentBorrower(Borrower currentBorrower) {
 		this.currentBorrower = currentBorrower;
 	}
@@ -37,13 +42,14 @@ public class LibraryController
 	/**
 	 * Konstruktor som ser till att boota systemet med samtliga Media, Borrowers, Borrowed och MediaSearchResults i ArrayList 
 	 */
-	LibraryController()
+
+	LibraryController(boolean ifBoot)
 	{
 		allMediaObjects = new ArrayList<Media>(24);
 		allBorrowers = new ArrayList<Borrower>();
 		borrowed = new ArrayList<String>();
 		mediaSearchResults = new LinkedList<Media>();
-		boot();
+		if(ifBoot) boot();
 	}
 	
 	/**
@@ -89,12 +95,13 @@ public class LibraryController
 	 * Samma som ovan fast strängen får enbart innehålla siffro, används till Media-ObjectID
 	 */
 
+//tillagd av krasen för att undvika att message visas i tester
 	public void showMessage(String message){
 		JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
 
 	}
-	
-	boolean checkInputOnlyDigits(String inputString)
+
+	public boolean checkInputOnlyDigits(String inputString)
 	{
 		// Får endbart innehålla heltal
 		String regex = "^-?\\d*?\\d+$";
@@ -110,6 +117,8 @@ public class LibraryController
 		}
 		try
 		{
+
+			//onödiga rader nedan
 			if(Integer.parseInt(inputString)<Integer.MIN_VALUE)
 			{
 				JOptionPane.showMessageDialog(null, "The number is too low, min is " + Integer.MIN_VALUE, "Error", JOptionPane.ERROR_MESSAGE);
@@ -137,7 +146,7 @@ public class LibraryController
 		
 		try
 		{
-			PrintWriter theOutPutf = new PrintWriter(new FileOutputStream(new File("Mediabiblioteket/files/Utlanade.txt")));
+			PrintWriter theOutPutf = new PrintWriter(new FileOutputStream(new File("Utlanade.txt")));
 			
 			Iterator<String> iter = borrowed.iterator();
 			
@@ -293,6 +302,7 @@ public class LibraryController
 
 			if (tempMedia.toString().equals(theString))
 			{
+				//varför skriva ut i kommandotolken
 				System.out.println(tempMedia.toString());
 				JOptionPane.showMessageDialog(null, tempMedia.listInfo());
 				mediaSearchResults.restartList();
@@ -452,7 +462,7 @@ public class LibraryController
 	{
 		try
 		{
-			Scanner theScanner = new Scanner(new File("Mediabiblioteket/files/Utlanade.txt"));
+			Scanner theScanner = new Scanner(new File("Utlanade.txt"));
 			StringTokenizer theTokenizer;
 
 			while (theScanner.hasNext())
@@ -492,7 +502,7 @@ public class LibraryController
 		try
 		{
 
-			Scanner theScanner = new Scanner(new File("Mediabiblioteket/files/Lantagare.txt"));
+			Scanner theScanner = new Scanner(new File("Lantagare.txt"));
 			StringTokenizer theTokenizer;
 
 			while (theScanner.hasNext())
@@ -525,7 +535,7 @@ public class LibraryController
 		try
 		{
 			StringTokenizer theTokenizer;
-			Scanner theScanner = new Scanner(new File("Mediabiblioteket/files/Media.txt"));
+			Scanner theScanner = new Scanner(new File("Media.txt"));
 
 			while (theScanner.hasNext())
 			{

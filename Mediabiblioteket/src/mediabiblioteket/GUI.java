@@ -79,7 +79,8 @@ public class GUI extends JFrame implements ActionListener
 
 		// The Main Panel
 		theMainPanel = new JPanel(new BorderLayout());
-		theMainPanel.setPreferredSize(new Dimension(500, 900));
+		theMainPanel.setPreferredSize(new Dimension(500, 750));
+
 		// The North Panel
 		theNorthPanel = new JPanel(new BorderLayout());
 		theNorthPanel.setOpaque(false);
@@ -165,12 +166,13 @@ public class GUI extends JFrame implements ActionListener
 		add(theMainPanel);
 		add(theRightColumn);
 
-		setMinimumSize(new Dimension(900, 400));
+		setMinimumSize(new Dimension(900, 750));
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 600);
 		pack();
 		setVisible(true);
+		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 	}
 	
 	/**
@@ -333,6 +335,7 @@ public class GUI extends JFrame implements ActionListener
 	public static void main(String[] arguments)
 	{
 		new GUI();
+
 	}
 
 
