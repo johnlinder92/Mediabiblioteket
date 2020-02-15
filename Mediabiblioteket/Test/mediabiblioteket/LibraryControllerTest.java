@@ -16,11 +16,15 @@ import static org.mockito.Mockito.*;
 class LibraryControllerTest {
     private LibraryController LController;
     private JFrame frame = new JFrame();
+    private Borrower testB;
+    private Book testBok;
 
     @BeforeEach
     void setUp(){
         LController = mock(LibraryController.class);
         doNothing().when(LController).showMessage("Incorrect characters only 0-9 are allowed");
+        testBok = new Book("Bok","Boktitel", "BokID", 1920, "Hermann Hesse");
+        testB= new Borrower("testnamn", "121212-1212", "0700900909");
 
     }
 
@@ -86,11 +90,8 @@ class LibraryControllerTest {
     @Test
     void borrowMedia() {
         //Media test_borrowMedia = new Media("Bok", "boktitel", "123", 45);
-        Book testbok = new Book("Bok","Boktitel", "BokID", 1920, "Hermann Hesse");
-        Borrower testB= new Borrower("testnamn", "121212-1212", "0700900909");
-        LController.setCurrentBorrower(testB);
-        LController.borrowMedia(testbok);
-        assertTrue(testbok.borrowed);
+        LController.borrowMedia(testBok);
+        assertTrue(testBok.borrowed);
     }
 
     @Test

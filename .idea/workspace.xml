@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c8afd73-7ee4-4eac-acde-55988f34b490" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_launcher_1_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediabiblioteket.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Mediabiblioteket.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediabiblioteket/Test/mediabiblioteket/GUITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mediabiblioteket/Test/mediabiblioteket/GUITest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mediabiblioteket/Test/mediabiblioteket/LibraryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mediabiblioteket/Test/mediabiblioteket/LibraryControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mediabiblioteket/Test/mediabiblioteket/MediaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mediabiblioteket/Test/mediabiblioteket/MediaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mediabiblioteket/bin/collections/ArrayList$MyIterator.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Mediabiblioteket/bin/collections/ArrayList.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Mediabiblioteket/bin/collections/ArrayStack.class" beforeDir="false" />
@@ -42,7 +24,7 @@
       <change beforePath="$PROJECT_DIR$/Mediabiblioteket/bin/mediabiblioteket/Testing$3.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Mediabiblioteket/bin/mediabiblioteket/Testing.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Mediabiblioteket/src/mediabiblioteket/LibraryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mediabiblioteket/src/mediabiblioteket/LibraryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mediabiblioteket/src/mediabiblioteket/Media.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mediabiblioteket/src/mediabiblioteket/Media.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,11 +114,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.LibraryControllerTest">
-    <configuration name="All in Mediabiblioteket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.GUI">
+    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="mediabiblioteket.GUI" />
       <module name="Mediabiblioteket" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mediabiblioteket.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Testing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="mediabiblioteket.Testing" />
+      <module name="Mediabiblioteket" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mediabiblioteket.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -172,22 +172,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LibraryControllerTest.checkUserInput_goodInput_ExpectTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Mediabiblioteket" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="mediabiblioteket.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="mediabiblioteket" />
-      <option name="MAIN_CLASS_NAME" value="mediabiblioteket.LibraryControllerTest" />
-      <option name="METHOD_NAME" value="checkUserInput_goodInput_ExpectTrue" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MediaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Mediabiblioteket" />
       <extension name="coverage">
@@ -205,11 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GUI" />
+        <item itemvalue="Application.Testing" />
         <item itemvalue="JUnit.LibraryControllerTest" />
         <item itemvalue="JUnit.MediaTest" />
         <item itemvalue="JUnit.LibraryControllerTest.checkInputOnlyDigits_testLetters_expectFalse" />
-        <item itemvalue="JUnit.All in Mediabiblioteket" />
-        <item itemvalue="JUnit.LibraryControllerTest.checkUserInput_goodInput_ExpectTrue" />
       </list>
     </recent_temporary>
   </component>
@@ -228,6 +212,8 @@
       <workItem from="1581413403148" duration="2460000" />
       <workItem from="1581430409179" duration="225000" />
       <workItem from="1581495013409" duration="4604000" />
+      <workItem from="1581587894525" duration="6026000" />
+      <workItem from="1581693373037" duration="40000" />
     </task>
     <task id="LOCAL−00001" summary="pom.xml med selenium och junit">
       <created>1580898630525</created>
@@ -247,7 +233,13 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1581415732063</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="Added unit test to Madia Test">
+      <created>1581587970978</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1581587970978</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +311,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Mediabiblioteket/Test/mediabiblioteket/LibraryControllerTest.java</url>
-          <line>44</line>
+          <line>48</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

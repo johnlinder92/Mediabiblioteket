@@ -15,7 +15,7 @@ class MediaTest {
     private LinkedList<String> actors;
 
     @BeforeEach
-    void setUp() {
+    void setUp_KP() {
         actors = new LinkedList<>();
         actors.add("Actor 1");
         actors.add("Actor 2");
@@ -24,20 +24,20 @@ class MediaTest {
     }
 
     @Test
-    void testGetMediaType() {
+    void testGetMediaType_KP() {
         assertEquals("Book", mediaTestBook.getMediaType());
         assertNotEquals("Book", mediaTestDVD.getMediaType());
 
     }
 
     @Test
-    void setMediaType() {
+    void testSetMediaType_KP() {
         mediaTestBook.setMediaType("New Book");
         assertEquals("New Book", mediaTestBook.getMediaType());
     }
 
     @Test
-    void setMediaTypeInvalidInput() {
+    void testSetMediaTypeInvalidInput_KP() {
 
         mediaTestBook.setMediaType("");
         assertEquals("Book", mediaTestBook.getMediaType());
@@ -51,18 +51,18 @@ class MediaTest {
 
 
     @Test
-    void getTitle() {
+    void testGetTitle_KP() {
         assertEquals("Book Title", mediaTestBook.getTitle());
         assertNotEquals("Book Title", mediaTestDVD.getTitle());
     }
 
     @Test
-    void setTitle() {
+    void testSetTitle_KP() {
         mediaTestBook.setTitle("New Title");
         assertEquals("New Title", mediaTestBook.getTitle());
     }
     @Test
-    void setMediaTitleInvalidInput() {
+    void testSetMediaTitleInvalidInput_KP() {
 
         mediaTestBook.setTitle("");
         assertEquals("Book", mediaTestBook.getTitle());
@@ -75,7 +75,7 @@ class MediaTest {
     }
 
     @Test
-    void getObjectID() {
+    void testGetObjectID_KP() {
         assertNotEquals("Test ID Book", mediaTestDVD.getObjectID());
         assertEquals("Test ID Book", mediaTestBook.getObjectID());
     }
