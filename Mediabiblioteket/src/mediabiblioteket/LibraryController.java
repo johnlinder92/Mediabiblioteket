@@ -421,15 +421,15 @@ public class LibraryController
 	{
 		if (loadFileBorrowers() == false)
 		{
-			JOptionPane.showMessageDialog(null, "files/Lantagare.txt not found");
+			JOptionPane.showMessageDialog(null, "fMediabiblioteket/files/Lantagare.txt not found");
 		}
 		if (loadFileMedia() == false)
 		{
-			JOptionPane.showMessageDialog(null, "files/Media.txt not found");
+			JOptionPane.showMessageDialog(null, "Mediabiblioteket/files/Media.txt not found");
 		}
 		if(loadBorrowedMedia() == false)
 		{
-			JOptionPane.showMessageDialog(null, "files/Utlanade.txt not found");
+			JOptionPane.showMessageDialog(null, "Mediabiblioteket/files/Utlanade.txt not found");
 		}
 	}
 	

@@ -16,14 +16,15 @@ import static org.mockito.Mockito.*;
 
 class LibraryControllerTest {
     private LibraryController LController;
+    private LibraryController MController;
     private JFrame frame = new JFrame();
     private Borrower borrower;
     private ArrayList<Media> testarray = new ArrayList();
     @BeforeEach
     void setUp(){
         LController = new LibraryController(false);
-       /* LController = mock(LibraryController.class);
-        doNothing().when(LController).showMessage("Incorrect characters only 0-9 are allowed");*/
+        MController = mock(LibraryController.class);
+        doNothing().when(MController).showMessage("Incorrect characters only 0-9 are allowed");
 
         Book bok= new Book("test1", "test1", "4321", 9998, "test");
 
@@ -51,18 +52,18 @@ class LibraryControllerTest {
 
     @Test
     void checkInputOnlyDigits_testLetters_expectFalse() {
-        assertFalse(LController.checkInputOnlyDigits("test"));
+        assertFalse(MController.checkInputOnlyDigits("test"));
     }
 
     @Test
     void checkInputOnlyDigits_validNumbers_ExpectTrue() { assertTrue(LController.checkInputOnlyDigits("123")); }
     @Test
-    void checkInputOnlyDigits_toSmallNumber_ExpectFalse() { assertFalse( LController.checkInputOnlyDigits("-9130791238")); }
+    void checkInputOnlyDigits_toSmallNumber_ExpectFalse() { assertFalse( MController.checkInputOnlyDigits("-9130791238")); }
     @Test
-    void checkInputOnlyDigits_toBigNumber_ExpectFalse() { assertFalse(LController.checkInputOnlyDigits("213079123801239931209")); }
+    void checkInputOnlyDigits_toBigNumber_ExpectFalse() { assertFalse( MController.checkInputOnlyDigits("213079123801239931209")); }
     @Test
     void checkInputOnlyDigits_nullInput_expectFalse() {
-        assertFalse(LController.checkInputOnlyDigits(null));
+        assertFalse(MController.checkInputOnlyDigits(null));
     }
 
 
@@ -109,9 +110,13 @@ class LibraryControllerTest {
     @Test
     void returnMedia() {
         Borrower borrower = new Borrower("Testname", "TEstpersonalnumber", "TEstPhoneNumber");
+
         Book boken = new Book("TEsttype", "TestTitle", "TestID", 1977, "TestAuthor");
-        boken.setBorrowed(true);
-        boken.setThisMediaBorrower(borrower);
+        LController.setCurrentBorrower(borrower);
+
+        LController.borrowMedia(boken);
+
+
         LController.returnMedia(boken);
 
         assertFalse(boken.borrowed);
