@@ -16,12 +16,21 @@ import static org.mockito.Mockito.*;
 
 class LibraryControllerTest {
     private LibraryController LController;
+    private GUI mockedGUI;
     private LibraryController MController;
+    private LibraryController ControllerwithMockedGUI;
     private JFrame frame = new JFrame();
     private Borrower borrower;
+    private String tempsearch = "";
     private ArrayList<Media> testarray = new ArrayList();
     @BeforeEach
     void setUp(){
+
+        mockedGUI = mock(GUI.class) ;
+
+        ControllerwithMockedGUI = new LibraryController(mockedGUI);
+        doNothing().when(mockedGUI).theController.searchMediaTitleByString(tempsearch);
+
         LController = new LibraryController(false);
         MController = mock(LibraryController.class);
         doNothing().when(MController).showMessage("Incorrect characters only 0-9 are allowed");
@@ -143,13 +152,22 @@ class LibraryControllerTest {
     @Test
     void showSelectedMediaInfo() {
     }
-
+// searchMediaAllByString använder dependency injektion: https://www.vogella.com/tutorials/DependencyInjection/article.html
     @Test
     void searchMediaAllByString() {
+
+
+
     }
 
     @Test
     void getMediaFromSearchResult() {
+        tempsearch = "bok" ;
+        ControllerwithMockedGUI.searchMediaAllByString(tempsearch);
+       Media testmedia =  ControllerwithMockedGUI.getMediaFromSearchResult("");
+        testmedia.toString();
+
+
     }
 
     @Test

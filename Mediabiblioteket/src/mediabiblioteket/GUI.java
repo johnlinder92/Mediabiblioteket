@@ -66,6 +66,8 @@ public class GUI extends JFrame implements ActionListener
 	 * huvudfönstret med de olika grafiska komponenterna som användaren kan interagera med via Controller klassen. 
 	 */
 	public GUI()
+
+	// ingen dependency injektion här tyvärr.....
 	{
 		theController = new LibraryController(this);
 		
