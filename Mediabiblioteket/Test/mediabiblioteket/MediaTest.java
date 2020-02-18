@@ -2,11 +2,11 @@ package mediabiblioteket;
 
 
 import collections.LinkedList;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class MediaTest {
 
@@ -19,8 +19,8 @@ class MediaTest {
         actors = new LinkedList<>();
         actors.add("Actor 1");
         actors.add("Actor 2");
-        mediaTestBook = new Book("Book", "Book Title", "Test ID Book", 1900, "Author");
-        mediaTestDVD = new DVD("DVD", "DVD Title", "Test ID DVD", 1900,  actors);
+        mediaTestBook = new Book("Book", "Book Title", "111", 1900, "Author");
+        mediaTestDVD = new DVD("DVD", "DVD Title", "112", 1900,  actors);
     }
 
     @Test
@@ -76,49 +76,89 @@ class MediaTest {
 
     @Test
     void testGetObjectID_KP() {
-        assertNotEquals("Test ID Book", mediaTestDVD.getObjectID());
-        assertEquals("Test ID Book", mediaTestBook.getObjectID());
+        assertEquals("111", mediaTestBook.getObjectID());
     }
 
 
     @Test
-    void setObjectID() {
-
+    void testSetObjectID_KP() {
+        mediaTestBook.setObjectID("1");
+        assertEquals("1", mediaTestBook.getObjectID());
     }
 
     @Test
-    void getYear() {
+    void testSetObjectIDWithInvalidInput(){
+        mediaTestBook.setObjectID("Test ID");
+        assertEquals("111", mediaTestBook.getObjectID());
+        mediaTestBook.setObjectID("");
+        assertEquals("111", mediaTestBook.getObjectID());
+        mediaTestBook.setObjectID(null);
+        assertEquals("111", mediaTestBook.getObjectID());
+        mediaTestBook.setObjectID("%#");
+        assertEquals("111", mediaTestBook.getObjectID());
+    }
+
+
+    @Test
+    void testGetYear_KP() {
+        assertEquals(1900, mediaTestBook.getYear());
     }
 
     @Test
-    void setYear() {
+    void testSetYear_KP() {
+        mediaTestBook.setYear(1901);
+        assertEquals(1901, mediaTestBook.getYear());
     }
 
     @Test
-    void getThisMediaBorrower() {
+    void testSetYearInvalidInput_KP() {
+        mediaTestBook.setYear(0);
+        assertEquals(1901, mediaTestBook.getYear());
+        mediaTestBook.setYear(111111111);
+        assertEquals(1901, mediaTestBook.getYear());
+    }
+
+
+    @Test
+    void testGetAndSetThisMediaBorrower_KP() {
+        Borrower borrower = new Borrower("","","");
+        mediaTestBook.setThisMediaBorrower(borrower);
+        assertEquals(borrower, mediaTestBook.getThisMediaBorrower());
     }
 
     @Test
-    void setThisMediaBorrower() {
+    void testIsBorrowedAndSetBorrowed_KP() {
+        mediaTestBook.setBorrowed(true);
+        assertTrue(mediaTestBook.isBorrowed());
+        mediaTestBook.setBorrowed(false);
+        assertFalse(mediaTestBook.isBorrowed());
+        assertFalse(mediaTestDVD.isBorrowed());
+    }
+
+
+    //Behövs ej testas här, implementeras av subklasen
+    @Test
+    void testListInfo_KP() {
     }
 
     @Test
-    void isBorrowed() {
+    void testCompareTo_KP() {
+        Media mediaToCompare = new Book("Book", "Book Title", "111", 1900, "Author");
+        assertEquals(0, mediaToCompare.compareTo(mediaTestBook));
+        mediaToCompare.setObjectID("10");
+        assertTrue(mediaToCompare.compareTo(mediaTestBook)<0);
+        mediaToCompare.setObjectID("1000");
+        assertTrue(mediaToCompare.compareTo(mediaTestBook)>0);
+        Borrower borrower = new Borrower("","","");
+        assertTrue(mediaToCompare.compareTo(borrower)<0);
     }
 
     @Test
-    void setBorrowed() {
-    }
-
-    @Test
-    void listInfo() {
-    }
-
-    @Test
-    void compareTo() {
-    }
-
-    @Test
-    void testEquals() {
+    void testEquals_KP() {
+        Media media = mediaTestBook;
+        Borrower borrower = new Borrower("","","");
+        assertTrue(mediaTestBook.equals(media));
+        assertFalse(mediaTestBook.equals(mediaTestDVD));
+        assertFalse(mediaTestBook.equals(borrower));
     }
 }
