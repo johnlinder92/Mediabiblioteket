@@ -170,19 +170,4 @@ class LibraryControllerTest {
 
     }
 
-    @Test
-    void searchMediaTitleByString() {
-    }
-
-    @Test
-    void getBorrower() {
-    }
-
-    @Test
-    void loadBorrowedMedia() {
-    }
-
-    @Test
-    void searchBorrowed() {
-    }
 }

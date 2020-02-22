@@ -106,12 +106,13 @@ public abstract class Media implements Comparable
 	 * objektet får. Om det man jämför med inte är en instans av Media så returneras -2. 
 	 * @return. int positionen på compareTo metoden. -1, 0, 1 eller 2.
 	 */
+
 	public int compareTo( Object obj ) 
 	{
 		
 		 if(obj instanceof Media) 
 		 {
-		 Media media = (Media)obj;
+		 Media media = (Media) obj;
 		 
 		 if(Integer.parseInt(objectID)==Integer.parseInt(media.getObjectID()))
 			 return 0;
