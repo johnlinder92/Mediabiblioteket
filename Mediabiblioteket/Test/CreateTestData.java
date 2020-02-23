@@ -11,12 +11,12 @@ public class CreateTestData {
         this.faker = new Faker();
     }
 
-    private void createData(int n) throws IOException {
+    private void createDataLantagare(int n) throws IOException {
 
         BufferedWriter outputWriter = null;
-        outputWriter = new BufferedWriter(new FileWriter("test.txt"));
+        outputWriter = new BufferedWriter(new FileWriter("Lantagare.txt"));
         for (int i = 0; i < n; i++) {
-            outputWriter.write(faker.gameOfThrones().character());
+            outputWriter.write(faker.idNumber().validSvSeSsn()+";"+faker.name().fullName()+";"+faker.phoneNumber().cellPhone());
             outputWriter.newLine();
         }
         outputWriter.flush();
@@ -25,6 +25,6 @@ public class CreateTestData {
 
     public static void main(String[] args) throws IOException {
         CreateTestData createTestData = new CreateTestData();
-        createTestData.createData(100);
+        createTestData.createDataLantagare(100);
     }
 }
