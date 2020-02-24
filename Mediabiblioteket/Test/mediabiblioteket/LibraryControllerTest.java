@@ -150,9 +150,16 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
-    void getMedia() {
-        System.out.println(LController.getMedia("211185"));
+    void getMedia_CompareWithTheCorrespondingMedia_expectThemToBeSame_FH_JL() {
+
+        assertEquals( "DVD - Free\n - Crash - 2004 - Sandra Bullock - Don Cheadle - Matt Dillon - Jennifer Esposito - Brendan Fraser - Terrance Howard", LController.getMedia("211185").toString());
     }
+
+     @Test
+     void getMedia_CompareWithTheCorrespondingMediaLowestId_expectThemToBeSame_FH_JL() {
+
+         assertEquals( "Bok - Free\n - Bock i Örtagård - 1933 - Nilsson", LController.getMedia("123938").toString());
+     }
 
     @Test
     void showSelectedMediaInfo() {
