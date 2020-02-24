@@ -14,7 +14,7 @@ public class CreateTestData {
     private void createDataLantagare(int n) throws IOException {
 
         BufferedWriter outputWriter = null;
-        outputWriter = new BufferedWriter(new FileWriter("Lantagare.txt"));
+        outputWriter = new BufferedWriter(new FileWriter("Mediabiblioteket/files/TestLantagare.txt"));
         for (int i = 0; i < n; i++) {
             outputWriter.write(faker.idNumber().validSvSeSsn()+";"+faker.name().fullName()+";"+faker.phoneNumber().cellPhone());
             outputWriter.newLine();

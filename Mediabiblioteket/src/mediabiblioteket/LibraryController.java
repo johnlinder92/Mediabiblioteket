@@ -49,7 +49,7 @@ public class LibraryController
 		allBorrowers = new ArrayList<Borrower>();
 		borrowed = new ArrayList<String>();
 		mediaSearchResults = new LinkedList<Media>();
-		if(ifBoot) boot();
+		if(ifBoot) {boot();}
 	}
 	
 	/**
@@ -118,9 +118,10 @@ public class LibraryController
 		try
 		{
 
-			//onödiga rader nedan
+
 			if(Integer.parseInt(inputString)<Integer.MIN_VALUE)
-			{
+				//onödiga rader nedan
+				{
 				JOptionPane.showMessageDialog(null, "The number is too low, min is " + Integer.MIN_VALUE, "Error", JOptionPane.ERROR_MESSAGE);
 				return false;
 			}
@@ -458,7 +459,8 @@ public class LibraryController
 	 * Läs in samtliga utlånade Media objekt av nuvarande användare
 	 * @return true om filen finns, annars false
 	 */
-	public boolean loadBorrowedMedia()
+	public boolean loadBorrowedMedia
+	()
 	{
 		try
 		{

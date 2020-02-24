@@ -54,6 +54,7 @@ class MediaTest {
     void testGetTitle_KP() {
         assertEquals("Book Title", mediaTestBook.getTitle());
         assertNotEquals("Book Title", mediaTestDVD.getTitle());
+
     }
 
     @Test
@@ -72,6 +73,7 @@ class MediaTest {
         assertEquals("Book", mediaTestBook.getTitle());
         mediaTestBook.setTitle("%#");
         assertEquals("Book", mediaTestBook.getTitle());
+
     }
 
     @Test

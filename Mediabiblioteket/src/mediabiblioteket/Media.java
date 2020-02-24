@@ -110,7 +110,7 @@ public abstract class Media implements Comparable
 	public int compareTo( Object obj ) 
 	{
 		
-		 if(obj instanceof Media) 
+		 if(obj instanceof Media)
 		 {
 		 Media media = (Media) obj;
 		 
