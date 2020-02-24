@@ -17,7 +17,9 @@ import static org.mockito.Mockito.*;
  class LibraryControllerTest {
     private LibraryController LController;
     private GUI mockedGUI;
+     private GUI gui;
     private LibraryController MController;
+     private LibraryController Entill;
      private LibraryController johnController;
     private LibraryController ControllerwithMockedGUI;
     private JFrame frame = new JFrame();
@@ -32,7 +34,8 @@ import static org.mockito.Mockito.*;
    //     ControllerwithMockedGUI = new LibraryController(mockedGUI);
 //        doNothing().when(mockedGUI).theController.searchMediaTitleByString(tempsearch);
 
-
+        gui = new GUI();
+        Entill = new LibraryController(gui);
         johnController = new LibraryController(false);
         LController = new LibraryController(true);
         MController = mock(LibraryController.class);
@@ -117,11 +120,9 @@ import static org.mockito.Mockito.*;
         assertTrue(testbok.borrowed);
     }
 
-    @Test
-    void testCheckInputOnlyDigitsNew(){
 
-    }
-    @Test
+
+         @Test
     void returnMedia_JL() {
         Borrower borrower = new Borrower("Testname", "TEstpersonalnumber", "TEstPhoneNumber");
 
@@ -169,10 +170,20 @@ import static org.mockito.Mockito.*;
          assertEquals( "Bok - Free\n - Bock i Örtagård - 1933 - Nilsson", LController.getMedia("123938").toString());
      }
 
-    @Test
-    void showSelectedMediaInfo() {
 
-    }
+    // Krasen går det att göra detta test eller eftersom metoden skriver ut på GUI så är det svårt att verifiera?
+     // hur skulle du göra test till denna metod?
+  /* @Test
+   void showSelectedMediaInfo() {
+
+        Entill.searchMediaAllByString("Bok");
+
+       assertEquals(Entill.getMediaFromSearchResult("Bok - Free\n" +
+               " - Bock i Örtagård - 1933 - Nilsson - ").listInfo(),Entill.showSelectedMediaInfo("Bok - Free\n" +
+               " - Bock i Örtagård - 1933 - Nilsson - "));
+
+
+    }*/
 
     @Test
     void searchMediaAllByString() {
