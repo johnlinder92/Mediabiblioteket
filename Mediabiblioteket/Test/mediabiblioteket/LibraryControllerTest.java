@@ -18,6 +18,7 @@ import static org.mockito.Mockito.*;
     private LibraryController LController;
     private GUI mockedGUI;
     private LibraryController MController;
+     private LibraryController johnController;
     private LibraryController ControllerwithMockedGUI;
     private JFrame frame = new JFrame();
     private Borrower borrower;
@@ -32,17 +33,17 @@ import static org.mockito.Mockito.*;
 //        doNothing().when(mockedGUI).theController.searchMediaTitleByString(tempsearch);
 
 
-
+        johnController = new LibraryController(false);
         LController = new LibraryController(true);
         MController = mock(LibraryController.class);
         doNothing().when(MController).showMessage("Incorrect characters only 0-9 are allowed");
 
         Book bok= new Book("test1", "test1", "4321", 9998, "test");
 
-        LController.getAllMediaObjects().add(bok);
+        johnController.getAllMediaObjects().add(bok);
         Book bok2= new Book("test", "test", "1234", 1111, "test");
 
-        LController.getAllMediaObjects().add(bok2);
+        johnController.getAllMediaObjects().add(bok2);
     }
 
     @Test
@@ -137,14 +138,21 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
-    void checkIfBorrowerExist() {
+    void checkIfBorrowerExist_WithAnExistingBorrower_ExpectTrue_FH_JL() {
+        assertTrue(LController.checkIfBorrowerExist("681102-9999"));
+
     }
+     @Test
+     void checkIfBorrowerExist_WithANonExistingBorrower_ExpectFalse_FH_JL() {
+         assertFalse(LController.checkIfBorrowerExist("634544-3459"));
+
+     }
 
     @Test
     void sortMedia_JL() {
-        String iDBeforeSort =  LController.getAllMediaObjects().get(0).objectID;
-        LController.sortMedia();
-        String iDAfterSort  = LController.getAllMediaObjects().get(1).objectID;
+        String iDBeforeSort =  johnController.getAllMediaObjects().get(0).objectID;
+        johnController.sortMedia();
+        String iDAfterSort  = johnController.getAllMediaObjects().get(1).objectID;
         assertEquals(iDBeforeSort, iDAfterSort);
 
     }
@@ -163,6 +171,7 @@ import static org.mockito.Mockito.*;
 
     @Test
     void showSelectedMediaInfo() {
+
     }
 
     @Test
