@@ -39,9 +39,14 @@ public class LibraryController
 		this.currentBorrower = currentBorrower;
 	}
 
+	public LibraryController() {
+	}
+
 	/**
 	 * Konstruktor som ser till att boota systemet med samtliga Media, Borrowers, Borrowed och MediaSearchResults i ArrayList 
 	 */
+
+
 
 	LibraryController(boolean ifBoot)
 	{

@@ -1,41 +1,52 @@
 package mediabiblioteket;
 
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
- class LibraryControllerTest {
+class LibraryControllerTest {
     private LibraryController LController;
     private GUI mockedGUI;
-     private GUI gui;
+    private GUI gui;
     private LibraryController MController;
-     private LibraryController Entill;
-     private LibraryController johnController;
+    private LibraryController Entill;
+    private LibraryController johnController;
     private LibraryController ControllerwithMockedGUI;
     private JFrame frame = new JFrame();
     private Borrower borrower;
     private String tempsearch = "";
     private ArrayList<Media> testarray = new ArrayList();
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final PrintStream originalErr = System.err;
+    private LibraryController controllerNoArray;
+
     @BeforeEach
     void setUp(){
 
-    //    mockedGUI = mock(GUI.class) ;
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
 
-   //     ControllerwithMockedGUI = new LibraryController(mockedGUI);
+
+        //    mockedGUI = mock(GUI.class) ;
+
+        //     ControllerwithMockedGUI = new LibraryController(mockedGUI);
 //        doNothing().when(mockedGUI).theController.searchMediaTitleByString(tempsearch);
-
-        gui = new GUI();
-        Entill = new LibraryController(gui);
+        controllerNoArray = new LibraryController();
         johnController = new LibraryController(false);
         LController = new LibraryController(true);
         MController = mock(LibraryController.class);
@@ -55,30 +66,30 @@ import static org.mockito.Mockito.*;
     }
     @Test
     void checkUserInput_nullInput_expectFalse() {
-        assertFalse(MController.checkUserInput(null));
+        assertFalse(LController.checkUserInput(null));
     }
     @Test
     void checkUserInput_nothingString_expectFalse() {
-        assertFalse(MController.checkUserInput(""));
+        assertFalse(LController.checkUserInput(""));
     }
     @Test
-    void checkUserInput_badInput_expectFalse() { assertFalse(MController.checkUserInput("%¤#¤¤")); }
+    void checkUserInput_badInput_expectFalse() { assertFalse(LController.checkUserInput("%¤#¤¤")); }
 
 
     @Test
     void checkInputOnlyDigits_testLetters_expectFalse() {
-        assertFalse(MController.checkInputOnlyDigits("test"));
+        assertFalse(LController.checkInputOnlyDigits("test"));
     }
 
     @Test
     void checkInputOnlyDigits_validNumbers_ExpectTrue() { assertTrue(LController.checkInputOnlyDigits("123")); }
     @Test
-    void checkInputOnlyDigits_toSmallNumber_ExpectFalse() { assertFalse( MController.checkInputOnlyDigits("-9130791238")); }
+    void checkInputOnlyDigits_toSmallNumber_ExpectFalse() { assertFalse( LController.checkInputOnlyDigits("-9130791238")); }
     @Test
-    void checkInputOnlyDigits_toBigNumber_ExpectFalse() { assertFalse( MController.checkInputOnlyDigits("213079123801239931209")); }
+    void checkInputOnlyDigits_toBigNumber_ExpectFalse() { assertFalse( LController.checkInputOnlyDigits("213079123801239931209")); }
     @Test
     void checkInputOnlyDigits_nullInput_expectFalse() {
-        assertFalse(MController.checkInputOnlyDigits(null));
+        assertFalse(LController.checkInputOnlyDigits(null));
     }
 
 
@@ -111,6 +122,13 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
+    void writeToFile_TriggerException_expectErrorMessageToBenull_JL() {
+        controllerNoArray.writeToFile();
+      assertTrue(outContent.toString().contains("null"));
+    }
+
+
+    @Test
     void borrowMedia_TestBookObjectBorrowedVariable_ExpectTrue_JL_NOT_FINISHED() {
         //Media test_borrowMedia = new Media("Bok", "boktitel", "123", 45);
         Book testbok = new Book("Bok","Boktitel", "BokID", 1920, "Hermann Hesse");
@@ -122,7 +140,7 @@ import static org.mockito.Mockito.*;
 
 
 
-         @Test
+    @Test
     void returnMedia_JL() {
         Borrower borrower = new Borrower("Testname", "TEstpersonalnumber", "TEstPhoneNumber");
 
@@ -143,11 +161,11 @@ import static org.mockito.Mockito.*;
         assertTrue(LController.checkIfBorrowerExist("681102-9999"));
 
     }
-     @Test
-     void checkIfBorrowerExist_WithANonExistingBorrower_ExpectFalse_FH_JL() {
-         assertFalse(LController.checkIfBorrowerExist("634544-3459"));
+    @Test
+    void checkIfBorrowerExist_WithANonExistingBorrower_ExpectFalse_FH_JL() {
+        assertFalse(LController.checkIfBorrowerExist("634544-3459"));
 
-     }
+    }
 
     @Test
     void sortMedia_JL() {
@@ -164,25 +182,21 @@ import static org.mockito.Mockito.*;
         assertEquals( "DVD - Free\n - Crash - 2004 - Sandra Bullock - Don Cheadle - Matt Dillon - Jennifer Esposito - Brendan Fraser - Terrance Howard", LController.getMedia("211185").toString());
     }
 
-     @Test
-     void getMedia_CompareWithTheCorrespondingMediaLowestId_expectThemToBeSame_FH_JL() {
+    @Test
+    void getMedia_CompareWithTheCorrespondingMediaLowestId_expectThemToBeSame_FH_JL() {
 
-         assertEquals( "Bok - Free\n - Bock i Örtagård - 1933 - Nilsson", LController.getMedia("123938").toString());
-     }
+        assertEquals( "Bok - Free\n - Bock i Örtagård - 1933 - Nilsson", LController.getMedia("123938").toString());
+    }
 
 
     // Krasen går det att göra detta test eller eftersom metoden skriver ut på GUI så är det svårt att verifiera?
-     // hur skulle du göra test till denna metod?
+    // hur skulle du göra test till denna metod?
   /* @Test
    void showSelectedMediaInfo() {
-
         Entill.searchMediaAllByString("Bok");
-
        assertEquals(Entill.getMediaFromSearchResult("Bok - Free\n" +
                " - Bock i Örtagård - 1933 - Nilsson - ").listInfo(),Entill.showSelectedMediaInfo("Bok - Free\n" +
                " - Bock i Örtagård - 1933 - Nilsson - "));
-
-
     }*/
 
     @Test
@@ -198,8 +212,12 @@ import static org.mockito.Mockito.*;
         ControllerwithMockedGUI.searchMediaAllByString(tempsearch);
        Media testmedia =  ControllerwithMockedGUI.getMediaFromSearchResult("");
         testmedia.toString();
-
-
     }*/
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
 
 }
