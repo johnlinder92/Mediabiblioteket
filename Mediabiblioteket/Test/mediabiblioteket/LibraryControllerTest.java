@@ -38,7 +38,7 @@ class LibraryControllerTest {
     @BeforeEach
     void setUp(){
 
-        System.setOut(new PrintStream(outContent));
+       System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
 
 
@@ -224,7 +224,13 @@ class LibraryControllerTest {
 
 
     @Test
-    void searchMediaTitleByString() {
+    void searchMediaTitleByString_PrintOutSameAsTheSearchedMedia_Agenten_NE() {
+        gui = new GUI();
+        ControllerwithGUI = new LibraryController(gui);
+
+       ControllerwithGUI.searchMediaTitleByString("Agenten");
+        System.out.println(ControllerwithGUI.mediaSearchResults);
+        assertTrue(outContent.toString().contains("Agenten"));
     }
     @Test
     void getBorrower() {
