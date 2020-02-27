@@ -195,14 +195,18 @@ class LibraryControllerTest {
 
     // Krasen går det att göra detta test eller eftersom metoden skriver ut på GUI så är det svårt att verifiera?
     // hur skulle du göra test till denna metod?
-  /* @Test
-   void showSelectedMediaInfo() {
-        Entill.searchMediaAllByString("Bok");
-       assertEquals(Entill.getMediaFromSearchResult("Bok - Free\n" +
-               " - Bock i Örtagård - 1933 - Nilsson - ").listInfo(),Entill.showSelectedMediaInfo("Bok - Free\n" +
-               " - Bock i Örtagård - 1933 - Nilsson - "));
-    }*/
 
+   @Test
+   void showSelectedMediaInfo() {
+       gui = new GUI();
+       ControllerwithGUI = new LibraryController(gui);
+       ControllerwithGUI.searchMediaAllByString("Bok");
+       ControllerwithGUI.showSelectedMediaInfo(   "Bok - Free\n - Historiens matematik - 1991 - Thompson");
+
+       assertTrue(outContent.toString().contains("Historiens matematik"));
+
+
+   }
 
 
     @Test
@@ -218,9 +222,7 @@ class LibraryControllerTest {
     }
 
 
-    @Test
-    void searchMediaAllByString() {
-    }
+
     @Test
     void searchMediaTitleByString() {
     }
