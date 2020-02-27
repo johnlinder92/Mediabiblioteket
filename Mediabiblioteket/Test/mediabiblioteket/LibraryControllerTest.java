@@ -24,7 +24,7 @@ class LibraryControllerTest {
     private LibraryController MController;
     private LibraryController Entill;
     private LibraryController johnController;
-    private LibraryController ControllerwithMockedGUI;
+    private LibraryController ControllerwithGUI;
     private JFrame frame = new JFrame();
     private Borrower borrower;
     private String tempsearch = "";
@@ -46,6 +46,10 @@ class LibraryControllerTest {
 
         //     ControllerwithMockedGUI = new LibraryController(mockedGUI);
 //        doNothing().when(mockedGUI).theController.searchMediaTitleByString(tempsearch);
+
+
+
+
         controllerNoArray = new LibraryController();
         johnController = new LibraryController(false);
         LController = new LibraryController(true);
@@ -53,7 +57,7 @@ class LibraryControllerTest {
         doNothing().when(MController).showMessage("Incorrect characters only 0-9 are allowed");
 
         Book bok= new Book("test1", "test1", "4321", 9998, "test");
-
+        borrower= new Borrower("John", "19920703-3476", "0761412739");
         johnController.getAllMediaObjects().add(bok);
         Book bok2= new Book("test", "test", "1234", 1111, "test");
 
@@ -199,20 +203,34 @@ class LibraryControllerTest {
                " - Bock i Örtagård - 1933 - Nilsson - "));
     }*/
 
+
+
     @Test
-    void searchMediaAllByString() {
+    void getMediaFromSearchResult_PrintOutAMedia_ExpectPrintToContainBookInfoFromTheMethod_JL() {
+        tempsearch = "bok" ;
+        gui = new GUI();
+        ControllerwithGUI = new LibraryController(gui);
 
-
-
+  ControllerwithGUI.searchMediaAllByString(tempsearch);
+       Media testmedia =  ControllerwithGUI.getMediaFromSearchResult("Bok - Free\n - Historiens matematik - 1991 - Thompson");
+        System.out.println(testmedia);
+        assertTrue(outContent.toString().contains("Historiens matematik"));
     }
 
-   /* @Test
-    void getMediaFromSearchResult() {
-        tempsearch = "bok" ;
-        ControllerwithMockedGUI.searchMediaAllByString(tempsearch);
-       Media testmedia =  ControllerwithMockedGUI.getMediaFromSearchResult("");
-        testmedia.toString();
-    }*/
+
+    @Test
+    void searchMediaAllByString() {
+    }
+    @Test
+    void searchMediaTitleByString() {
+    }
+    @Test
+    void getBorrower() {
+    }
+    @Test
+    void searchBorrowed() {
+    }
+
 
     @AfterEach
     public void restoreStreams() {

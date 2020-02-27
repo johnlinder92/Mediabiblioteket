@@ -86,8 +86,7 @@ public class LibraryController
 		{
 			if(!inputString.matches(regex))
 			{
-				return false;
-			}
+				return false; }
 		}
 		catch(Exception e)
 		{
