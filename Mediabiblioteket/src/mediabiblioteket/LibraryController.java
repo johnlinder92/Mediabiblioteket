@@ -30,9 +30,7 @@ public class LibraryController
 		return allMediaObjects;
 	}
 
-	public void setAllMediaObjects(ArrayList<Media> allMediaObjects) {
-		this.allMediaObjects = allMediaObjects;
-	}
+
 
 	//  Lagt till av john för att testaCurrentBorrower
 	public void setCurrentBorrower(Borrower currentBorrower) {
