@@ -233,8 +233,19 @@ class LibraryControllerTest {
         assertTrue(outContent.toString().contains("Agenten"));
     }
     @Test
-    void getBorrower() {
+    void getBorrower_testPhoneNumber_NE() {
+        Borrower borrower=LController.getBorrower("681102-9999");
+        assertEquals(borrower.getphoneNumber(),"040-2163542");
+
     }
+    @Test
+    void getBorrower_testNull_NE(){
+        //Borrower borrower=LController.getBorrower("920140-8764");
+        assertEquals(LController.getBorrower("920140-8764"),null);
+
+    }
+
+
     @Test
     void searchBorrowed() {
     }
