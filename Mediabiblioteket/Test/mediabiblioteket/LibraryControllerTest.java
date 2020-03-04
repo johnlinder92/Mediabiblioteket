@@ -59,7 +59,9 @@ class LibraryControllerTest {
         Book bok= new Book("test1", "test1", "4321", 9998, "test");
         borrower= new Borrower("John", "19920703-3476", "0761412739");
         johnController.getAllMediaObjects().add(bok);
-        Book bok2= new Book("test", "test", "1234", 1111, "test");
+        Book bok2 = new Book("test", "test", "1234", 1111, "test");
+
+
 
         johnController.getAllMediaObjects().add(bok2);
     }
@@ -247,7 +249,21 @@ class LibraryControllerTest {
 
 
     @Test
-    void searchBorrowed() {
+    void searchBorrowed_test_NE() {
+
+        GUI gui2= new GUI();
+        ControllerwithGUI = new LibraryController(gui2);
+        ControllerwithGUI.setCurrentBorrower(ControllerwithGUI.getBorrower("700311-8888"));
+     /*  Book bok4 = new Book("test", "test", "123467", 1111, "test");
+        Book bok5 = new Book("test", "test", "123476", 1111, "test");
+        ControllerwithGUI.borrowMedia(bok4);
+        ControllerwithGUI.borrowMedia(bok5);*/
+
+        ControllerwithGUI.searchBorrowed();
+        System.out.println(ControllerwithGUI.mediaSearchResults);
+        assertTrue(outContent.toString().contains("Chevalier"));
+
+
     }
 
 
